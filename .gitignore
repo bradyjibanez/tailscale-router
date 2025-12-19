@@ -1,0 +1,14 @@
+# Secrets
+.env
+config/*.secret
+config/*.key
+
+# Runtime state
+state/*
+!state/.gitkeep
+
+# Docker junk
+*.log
+
+# OS
+.DS_Store
