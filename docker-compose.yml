@@ -14,9 +14,11 @@ services:
     volumes:
       - ./state:/var/lib/tailscale
       - ./config:/config:ro
+      - ./scripts:/scripts:ro
 
     env_file:
       - .env
+      - ./config/subnets.env
 
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
@@ -28,11 +30,11 @@ services:
         . /config/subnets.env
         tailscaled &
         sleep 3
-        tailscale up
-          --authkey="${TS_AUTHKEY}"
-          --hostname="${TS_HOSTNAME}"
-          --advertise-routes="${TS_SUBNETS}"
-          ${TS_EXTRA_FLAGS}
+        tailscale up \
+          --authkey="$$TS_AUTHKEY" \
+          --hostname="$$TS_HOSTNAME" \
+          --advertise-routes="$$TS_SUBNETS$" \
+          $$TS_EXTRA_FLAGS
         wait
       '
 
