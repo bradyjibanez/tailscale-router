@@ -26,7 +26,6 @@ services:
 
     command: >
       sh -c '
-        /config/preflight.sh || true
         . /config/subnets.env
         tailscaled &
         sleep 3
