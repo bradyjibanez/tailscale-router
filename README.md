@@ -17,6 +17,7 @@ Dockerized Tailscale node that can:
 ```bash
 sudo sysctl -w net.ipv4.ip_forward=1
 
+<<<<<<< HEAD
 First-time setup
 Enable IP forwarding (host):
 sudo sysctl -w net.ipv4.ip_forward=1
